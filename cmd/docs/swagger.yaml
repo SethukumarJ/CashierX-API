@@ -1,0 +1,76 @@
+basePath: /
+definitions:
+  pb.RegisterResponse:
+    properties:
+      error:
+        type: string
+      id:
+        type: integer
+      status:
+        type: integer
+    type: object
+  routes.RegisterRequestBody:
+    properties:
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      user_name:
+        type: string
+    type: object
+host: localhost:3005
+info:
+  contact:
+    email: sethukumarj.76@gmail.com
+    name: API Support
+    url: sethukumarj.com
+  description: This is Money management project. You can visit the GitHub repository
+    at https://github.com/SethukumarJ/CashierX-API-Gateway
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  title: CashierX API
+  version: "1.0"
+paths:
+  /auth/register:
+    post:
+      operationId: User Registration
+      parameters:
+      - description: User registration
+        in: body
+        name: RegisterUser
+        required: true
+        schema:
+          $ref: '#/definitions/routes.RegisterRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.RegisterResponse'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/pb.RegisterResponse'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/pb.RegisterResponse'
+      summary: Register new user
+      tags:
+      - Authentication-Service
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
