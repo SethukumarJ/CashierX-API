@@ -1,5 +1,16 @@
 basePath: /
 definitions:
+  pb.LoginResponse:
+    properties:
+      access_token:
+        type: string
+      error:
+        type: string
+      refressh_token:
+        type: string
+      status:
+        type: integer
+    type: object
   pb.RegisterResponse:
     properties:
       error:
@@ -8,6 +19,13 @@ definitions:
         type: integer
       status:
         type: integer
+    type: object
+  routes.LoginRequestBody:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
     type: object
   routes.RegisterRequestBody:
     properties:
@@ -36,6 +54,34 @@ info:
   title: CashierX API
   version: "1.0"
 paths:
+  /auth/login:
+    post:
+      operationId: User Login
+      parameters:
+      - description: User Login
+        in: body
+        name: LoginUser
+        required: true
+        schema:
+          $ref: '#/definitions/routes.LoginRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.LoginResponse'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/pb.LoginResponse'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/pb.LoginResponse'
+      summary: Login user
+      tags:
+      - Authentication-Service
   /auth/register:
     post:
       operationId: User Registration

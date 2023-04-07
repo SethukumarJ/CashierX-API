@@ -18,19 +18,6 @@ type RegisterRequestBody struct {
 	Password  string `json:"password"`
 }
 
-// RegisterSuccess response struct for successful user registration
-type RegisterSuccess struct {
-	Status string `json:"status,omitempty"`
-	Id     int64  `json:"id,omitempty"`
-	Error  string `json:"error,omitempty"`
-}
-
-var successRes = RegisterSuccess{
-	Status: "success",
-	Id:     1,
-	Error:  "",
-}
-
 // @Summary Register new user
 // @ID User Registration
 // @Tags Authentication-Service
