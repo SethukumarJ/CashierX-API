@@ -10,10 +10,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Delete(ctx *gin.Context, c pb.AuthServiceClient) {
+func DeleteUser(ctx *gin.Context, c pb.AuthServiceClient) {
 	id, _ := strconv.ParseInt(ctx.Param("id"), 10, 32)
 	fmt.Println("id", id)
-	res, err := c.Delete(context.Background(), &pb.DeleteRequest{
+	res, err := c.DeleteUser(context.Background(), &pb.DeleteUserRequest{
 		Id: int64(id),
 	})
 

@@ -36,6 +36,11 @@ func (c *AuthMiddlewareConfig) AuthRequired(ctx *gin.Context) {
         Token: token[1],
     })
 
+    if res.Source == "refreshtoken" {
+        ctx.AbortWithStatusJSON(http.StatusUnauthorized,"can't use refresh token")
+        return
+    }
+
     if err != nil || res.Status != http.StatusOK {
         ctx.AbortWithStatus(http.StatusUnauthorized)
         return

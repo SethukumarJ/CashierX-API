@@ -8,19 +8,26 @@ service AuthService {
   rpc Register(RegisterRequest) returns (RegisterResponse) {}
   rpc Login(LoginRequest) returns (LoginResponse) {}
   rpc Validate(ValidateRequest) returns (ValidateResponse) {}
-  rpc Delete(DeleteRequest) returns (DeleteResponse) {}
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
+  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse) {}
+  rpc FindUser(FindUserRequest) returns (FindUserResponse) {}
+  rpc TokenRefresh(TokenRefreshRequest) returns (TokenRefreshResponse) {}
 }
 
 // Register
 
 message RegisterRequest {
-  string email = 1;
-  string password = 2;
+  string user_name = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string email = 4;
+  string password = 5;
 }
 
 message RegisterResponse {
   int64 status = 1;
-  string error = 2;
+  int64 id = 2;
+  string error = 3;
 }
 
 // Login
@@ -33,14 +40,15 @@ message LoginRequest {
 message LoginResponse {
   int64 status = 1;
   string error = 2;
-  string token = 3;
+  string access_token = 3;
+  string refressh_token = 4;
 }
 
-// Delete
+// DeleteUser
 
-message DeleteRequest { int64 id = 1; }
+message DeleteUserRequest { int64 id = 1; }
 
-message DeleteResponse {
+message DeleteUserResponse {
   int64 status = 1;
   string error = 2;
   int64 id = 3;
@@ -54,4 +62,50 @@ message ValidateResponse {
   int64 status = 1;
   string error = 2;
   int64 userId = 3;
+  string source = 4;
+}
+
+
+// GetUsers
+
+message GetUsersRequest {}
+message GetUsersResponse {
+  repeated User user = 1;
+}
+
+message User {
+  int64 id = 1;
+  string user_name = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string email = 5;
+}
+
+
+// FindUser
+
+message FindUser {
+  int64 id = 1;
+  string user_name = 2;
+  string email = 3; 
+  string first_name = 4;
+  string last_name = 5;
+}
+
+message FindUserRequest { int64 id = 1; }
+
+message FindUserResponse {
+  int64 status = 1;
+  string error = 2;
+  FindUser data = 3;
+}
+
+// TokenRefresh
+
+message TokenRefreshRequest { string token = 1; }
+
+message TokenRefreshResponse {
+  int64 status = 1;
+  string error = 2;
+  string token = 3;
 }
