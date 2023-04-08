@@ -4,7 +4,7 @@ package account;
 
 option go_package = "./pkg/account/pb";
 
-service ProductService {
+service AccountService {
   rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse) {}
   rpc FindAccount(FindAccountRequest) returns (FindAccountResponse) {}
   rpc UpdateAccount(UpdateAccountRequest) returns (UpdateAccountResponse) {}

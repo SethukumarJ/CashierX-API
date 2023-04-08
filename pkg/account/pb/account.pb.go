@@ -1312,8 +1312,8 @@ var file_pkg_account_pb_account_proto_rawDesc = []byte{
 	0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b,
 	0x32, 0x18, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x54, 0x72, 0x61, 0x6e, 0x73,
 	0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x61, 0x74, 0x61, 0x52, 0x0c, 0x74, 0x72, 0x61, 0x6e,
-	0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x32, 0xb8, 0x05, 0x0a, 0x0e, 0x50, 0x72, 0x6f,
-	0x64, 0x75, 0x63, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x50, 0x0a, 0x0d, 0x43,
+	0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x32, 0xb8, 0x05, 0x0a, 0x0e, 0x41, 0x63, 0x63,
+	0x6f, 0x75, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x50, 0x0a, 0x0d, 0x43,
 	0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x1d, 0x2e, 0x61,
 	0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x63, 0x63,
 	0x6f, 0x75, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x61, 0x63,
@@ -1399,22 +1399,22 @@ var file_pkg_account_pb_account_proto_depIdxs = []int32{
 	11, // 1: account.GetAccountsResponse.accounts:type_name -> account.AccountData
 	14, // 2: account.GetTransactionsResponse.transactions:type_name -> account.TransactionData
 	14, // 3: account.GetTransferredTransactionsResponse.transactions:type_name -> account.TransactionData
-	0,  // 4: account.ProductService.CreateAccount:input_type -> account.CreateAccountRequest
-	3,  // 5: account.ProductService.FindAccount:input_type -> account.FindAccountRequest
-	5,  // 6: account.ProductService.UpdateAccount:input_type -> account.UpdateAccountRequest
-	7,  // 7: account.ProductService.DeleteAccount:input_type -> account.DeleteAccountRequest
-	9,  // 8: account.ProductService.GetAccounts:input_type -> account.GetAccountsRequest
-	12, // 9: account.ProductService.GetBalance:input_type -> account.GetBalanceRequest
-	15, // 10: account.ProductService.GetTransactions:input_type -> account.GetTransactionsRequest
-	17, // 11: account.ProductService.GetTransferredTransactions:input_type -> account.GetTransferredTransactionsRequest
-	1,  // 12: account.ProductService.CreateAccount:output_type -> account.CreateAccountResponse
-	4,  // 13: account.ProductService.FindAccount:output_type -> account.FindAccountResponse
-	6,  // 14: account.ProductService.UpdateAccount:output_type -> account.UpdateAccountResponse
-	8,  // 15: account.ProductService.DeleteAccount:output_type -> account.DeleteAccountResponse
-	10, // 16: account.ProductService.GetAccounts:output_type -> account.GetAccountsResponse
-	13, // 17: account.ProductService.GetBalance:output_type -> account.GetBalanceResponse
-	16, // 18: account.ProductService.GetTransactions:output_type -> account.GetTransactionsResponse
-	18, // 19: account.ProductService.GetTransferredTransactions:output_type -> account.GetTransferredTransactionsResponse
+	0,  // 4: account.AccountService.CreateAccount:input_type -> account.CreateAccountRequest
+	3,  // 5: account.AccountService.FindAccount:input_type -> account.FindAccountRequest
+	5,  // 6: account.AccountService.UpdateAccount:input_type -> account.UpdateAccountRequest
+	7,  // 7: account.AccountService.DeleteAccount:input_type -> account.DeleteAccountRequest
+	9,  // 8: account.AccountService.GetAccounts:input_type -> account.GetAccountsRequest
+	12, // 9: account.AccountService.GetBalance:input_type -> account.GetBalanceRequest
+	15, // 10: account.AccountService.GetTransactions:input_type -> account.GetTransactionsRequest
+	17, // 11: account.AccountService.GetTransferredTransactions:input_type -> account.GetTransferredTransactionsRequest
+	1,  // 12: account.AccountService.CreateAccount:output_type -> account.CreateAccountResponse
+	4,  // 13: account.AccountService.FindAccount:output_type -> account.FindAccountResponse
+	6,  // 14: account.AccountService.UpdateAccount:output_type -> account.UpdateAccountResponse
+	8,  // 15: account.AccountService.DeleteAccount:output_type -> account.DeleteAccountResponse
+	10, // 16: account.AccountService.GetAccounts:output_type -> account.GetAccountsResponse
+	13, // 17: account.AccountService.GetBalance:output_type -> account.GetBalanceResponse
+	16, // 18: account.AccountService.GetTransactions:output_type -> account.GetTransactionsResponse
+	18, // 19: account.AccountService.GetTransferredTransactions:output_type -> account.GetTransferredTransactionsResponse
 	12, // [12:20] is the sub-list for method output_type
 	4,  // [4:12] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
@@ -1685,10 +1685,10 @@ var _ grpc.ClientConnInterface
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// ProductServiceClient is the client API for ProductService service.
+// AccountServiceClient is the client API for AccountService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type ProductServiceClient interface {
+type AccountServiceClient interface {
 	CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error)
 	FindAccount(ctx context.Context, in *FindAccountRequest, opts ...grpc.CallOption) (*FindAccountResponse, error)
 	UpdateAccount(ctx context.Context, in *UpdateAccountRequest, opts ...grpc.CallOption) (*UpdateAccountResponse, error)
@@ -1699,88 +1699,88 @@ type ProductServiceClient interface {
 	GetTransferredTransactions(ctx context.Context, in *GetTransferredTransactionsRequest, opts ...grpc.CallOption) (*GetTransferredTransactionsResponse, error)
 }
 
-type productServiceClient struct {
+type accountServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewProductServiceClient(cc grpc.ClientConnInterface) ProductServiceClient {
-	return &productServiceClient{cc}
+func NewAccountServiceClient(cc grpc.ClientConnInterface) AccountServiceClient {
+	return &accountServiceClient{cc}
 }
 
-func (c *productServiceClient) CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error) {
+func (c *accountServiceClient) CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error) {
 	out := new(CreateAccountResponse)
-	err := c.cc.Invoke(ctx, "/account.ProductService/CreateAccount", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/account.AccountService/CreateAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) FindAccount(ctx context.Context, in *FindAccountRequest, opts ...grpc.CallOption) (*FindAccountResponse, error) {
+func (c *accountServiceClient) FindAccount(ctx context.Context, in *FindAccountRequest, opts ...grpc.CallOption) (*FindAccountResponse, error) {
 	out := new(FindAccountResponse)
-	err := c.cc.Invoke(ctx, "/account.ProductService/FindAccount", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/account.AccountService/FindAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) UpdateAccount(ctx context.Context, in *UpdateAccountRequest, opts ...grpc.CallOption) (*UpdateAccountResponse, error) {
+func (c *accountServiceClient) UpdateAccount(ctx context.Context, in *UpdateAccountRequest, opts ...grpc.CallOption) (*UpdateAccountResponse, error) {
 	out := new(UpdateAccountResponse)
-	err := c.cc.Invoke(ctx, "/account.ProductService/UpdateAccount", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/account.AccountService/UpdateAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) DeleteAccount(ctx context.Context, in *DeleteAccountRequest, opts ...grpc.CallOption) (*DeleteAccountResponse, error) {
+func (c *accountServiceClient) DeleteAccount(ctx context.Context, in *DeleteAccountRequest, opts ...grpc.CallOption) (*DeleteAccountResponse, error) {
 	out := new(DeleteAccountResponse)
-	err := c.cc.Invoke(ctx, "/account.ProductService/DeleteAccount", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/account.AccountService/DeleteAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) GetAccounts(ctx context.Context, in *GetAccountsRequest, opts ...grpc.CallOption) (*GetAccountsResponse, error) {
+func (c *accountServiceClient) GetAccounts(ctx context.Context, in *GetAccountsRequest, opts ...grpc.CallOption) (*GetAccountsResponse, error) {
 	out := new(GetAccountsResponse)
-	err := c.cc.Invoke(ctx, "/account.ProductService/GetAccounts", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/account.AccountService/GetAccounts", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) GetBalance(ctx context.Context, in *GetBalanceRequest, opts ...grpc.CallOption) (*GetBalanceResponse, error) {
+func (c *accountServiceClient) GetBalance(ctx context.Context, in *GetBalanceRequest, opts ...grpc.CallOption) (*GetBalanceResponse, error) {
 	out := new(GetBalanceResponse)
-	err := c.cc.Invoke(ctx, "/account.ProductService/GetBalance", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/account.AccountService/GetBalance", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) GetTransactions(ctx context.Context, in *GetTransactionsRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error) {
+func (c *accountServiceClient) GetTransactions(ctx context.Context, in *GetTransactionsRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error) {
 	out := new(GetTransactionsResponse)
-	err := c.cc.Invoke(ctx, "/account.ProductService/GetTransactions", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/account.AccountService/GetTransactions", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *productServiceClient) GetTransferredTransactions(ctx context.Context, in *GetTransferredTransactionsRequest, opts ...grpc.CallOption) (*GetTransferredTransactionsResponse, error) {
+func (c *accountServiceClient) GetTransferredTransactions(ctx context.Context, in *GetTransferredTransactionsRequest, opts ...grpc.CallOption) (*GetTransferredTransactionsResponse, error) {
 	out := new(GetTransferredTransactionsResponse)
-	err := c.cc.Invoke(ctx, "/account.ProductService/GetTransferredTransactions", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/account.AccountService/GetTransferredTransactions", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// ProductServiceServer is the server API for ProductService service.
-type ProductServiceServer interface {
+// AccountServiceServer is the server API for AccountService service.
+type AccountServiceServer interface {
 	CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error)
 	FindAccount(context.Context, *FindAccountRequest) (*FindAccountResponse, error)
 	UpdateAccount(context.Context, *UpdateAccountRequest) (*UpdateAccountResponse, error)
@@ -1791,218 +1791,218 @@ type ProductServiceServer interface {
 	GetTransferredTransactions(context.Context, *GetTransferredTransactionsRequest) (*GetTransferredTransactionsResponse, error)
 }
 
-// UnimplementedProductServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedProductServiceServer struct {
+// UnimplementedAccountServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAccountServiceServer struct {
 }
 
-func (*UnimplementedProductServiceServer) CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error) {
+func (*UnimplementedAccountServiceServer) CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateAccount not implemented")
 }
-func (*UnimplementedProductServiceServer) FindAccount(context.Context, *FindAccountRequest) (*FindAccountResponse, error) {
+func (*UnimplementedAccountServiceServer) FindAccount(context.Context, *FindAccountRequest) (*FindAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindAccount not implemented")
 }
-func (*UnimplementedProductServiceServer) UpdateAccount(context.Context, *UpdateAccountRequest) (*UpdateAccountResponse, error) {
+func (*UnimplementedAccountServiceServer) UpdateAccount(context.Context, *UpdateAccountRequest) (*UpdateAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAccount not implemented")
 }
-func (*UnimplementedProductServiceServer) DeleteAccount(context.Context, *DeleteAccountRequest) (*DeleteAccountResponse, error) {
+func (*UnimplementedAccountServiceServer) DeleteAccount(context.Context, *DeleteAccountRequest) (*DeleteAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAccount not implemented")
 }
-func (*UnimplementedProductServiceServer) GetAccounts(context.Context, *GetAccountsRequest) (*GetAccountsResponse, error) {
+func (*UnimplementedAccountServiceServer) GetAccounts(context.Context, *GetAccountsRequest) (*GetAccountsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccounts not implemented")
 }
-func (*UnimplementedProductServiceServer) GetBalance(context.Context, *GetBalanceRequest) (*GetBalanceResponse, error) {
+func (*UnimplementedAccountServiceServer) GetBalance(context.Context, *GetBalanceRequest) (*GetBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBalance not implemented")
 }
-func (*UnimplementedProductServiceServer) GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error) {
+func (*UnimplementedAccountServiceServer) GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactions not implemented")
 }
-func (*UnimplementedProductServiceServer) GetTransferredTransactions(context.Context, *GetTransferredTransactionsRequest) (*GetTransferredTransactionsResponse, error) {
+func (*UnimplementedAccountServiceServer) GetTransferredTransactions(context.Context, *GetTransferredTransactionsRequest) (*GetTransferredTransactionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransferredTransactions not implemented")
 }
 
-func RegisterProductServiceServer(s *grpc.Server, srv ProductServiceServer) {
-	s.RegisterService(&_ProductService_serviceDesc, srv)
+func RegisterAccountServiceServer(s *grpc.Server, srv AccountServiceServer) {
+	s.RegisterService(&_AccountService_serviceDesc, srv)
 }
 
-func _ProductService_CreateAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AccountService_CreateAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateAccountRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).CreateAccount(ctx, in)
+		return srv.(AccountServiceServer).CreateAccount(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/account.ProductService/CreateAccount",
+		FullMethod: "/account.AccountService/CreateAccount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).CreateAccount(ctx, req.(*CreateAccountRequest))
+		return srv.(AccountServiceServer).CreateAccount(ctx, req.(*CreateAccountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_FindAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AccountService_FindAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FindAccountRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).FindAccount(ctx, in)
+		return srv.(AccountServiceServer).FindAccount(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/account.ProductService/FindAccount",
+		FullMethod: "/account.AccountService/FindAccount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).FindAccount(ctx, req.(*FindAccountRequest))
+		return srv.(AccountServiceServer).FindAccount(ctx, req.(*FindAccountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_UpdateAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AccountService_UpdateAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateAccountRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).UpdateAccount(ctx, in)
+		return srv.(AccountServiceServer).UpdateAccount(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/account.ProductService/UpdateAccount",
+		FullMethod: "/account.AccountService/UpdateAccount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).UpdateAccount(ctx, req.(*UpdateAccountRequest))
+		return srv.(AccountServiceServer).UpdateAccount(ctx, req.(*UpdateAccountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_DeleteAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AccountService_DeleteAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteAccountRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).DeleteAccount(ctx, in)
+		return srv.(AccountServiceServer).DeleteAccount(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/account.ProductService/DeleteAccount",
+		FullMethod: "/account.AccountService/DeleteAccount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).DeleteAccount(ctx, req.(*DeleteAccountRequest))
+		return srv.(AccountServiceServer).DeleteAccount(ctx, req.(*DeleteAccountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_GetAccounts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AccountService_GetAccounts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAccountsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).GetAccounts(ctx, in)
+		return srv.(AccountServiceServer).GetAccounts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/account.ProductService/GetAccounts",
+		FullMethod: "/account.AccountService/GetAccounts",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetAccounts(ctx, req.(*GetAccountsRequest))
+		return srv.(AccountServiceServer).GetAccounts(ctx, req.(*GetAccountsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_GetBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AccountService_GetBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetBalanceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).GetBalance(ctx, in)
+		return srv.(AccountServiceServer).GetBalance(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/account.ProductService/GetBalance",
+		FullMethod: "/account.AccountService/GetBalance",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetBalance(ctx, req.(*GetBalanceRequest))
+		return srv.(AccountServiceServer).GetBalance(ctx, req.(*GetBalanceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_GetTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AccountService_GetTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetTransactionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).GetTransactions(ctx, in)
+		return srv.(AccountServiceServer).GetTransactions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/account.ProductService/GetTransactions",
+		FullMethod: "/account.AccountService/GetTransactions",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetTransactions(ctx, req.(*GetTransactionsRequest))
+		return srv.(AccountServiceServer).GetTransactions(ctx, req.(*GetTransactionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_GetTransferredTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AccountService_GetTransferredTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetTransferredTransactionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).GetTransferredTransactions(ctx, in)
+		return srv.(AccountServiceServer).GetTransferredTransactions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/account.ProductService/GetTransferredTransactions",
+		FullMethod: "/account.AccountService/GetTransferredTransactions",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetTransferredTransactions(ctx, req.(*GetTransferredTransactionsRequest))
+		return srv.(AccountServiceServer).GetTransferredTransactions(ctx, req.(*GetTransferredTransactionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _ProductService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "account.ProductService",
-	HandlerType: (*ProductServiceServer)(nil),
+var _AccountService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "account.AccountService",
+	HandlerType: (*AccountServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CreateAccount",
-			Handler:    _ProductService_CreateAccount_Handler,
+			Handler:    _AccountService_CreateAccount_Handler,
 		},
 		{
 			MethodName: "FindAccount",
-			Handler:    _ProductService_FindAccount_Handler,
+			Handler:    _AccountService_FindAccount_Handler,
 		},
 		{
 			MethodName: "UpdateAccount",
-			Handler:    _ProductService_UpdateAccount_Handler,
+			Handler:    _AccountService_UpdateAccount_Handler,
 		},
 		{
 			MethodName: "DeleteAccount",
-			Handler:    _ProductService_DeleteAccount_Handler,
+			Handler:    _AccountService_DeleteAccount_Handler,
 		},
 		{
 			MethodName: "GetAccounts",
-			Handler:    _ProductService_GetAccounts_Handler,
+			Handler:    _AccountService_GetAccounts_Handler,
 		},
 		{
 			MethodName: "GetBalance",
-			Handler:    _ProductService_GetBalance_Handler,
+			Handler:    _AccountService_GetBalance_Handler,
 		},
 		{
 			MethodName: "GetTransactions",
-			Handler:    _ProductService_GetTransactions_Handler,
+			Handler:    _AccountService_GetTransactions_Handler,
 		},
 		{
 			MethodName: "GetTransferredTransactions",
-			Handler:    _ProductService_GetTransferredTransactions_Handler,
+			Handler:    _AccountService_GetTransferredTransactions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
