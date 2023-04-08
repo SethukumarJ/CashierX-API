@@ -20,6 +20,15 @@ definitions:
       status:
         type: integer
     type: object
+  pb.TokenRefreshResponse:
+    properties:
+      error:
+        type: string
+      status:
+        type: integer
+      token:
+        type: string
+    type: object
   routes.LoginRequestBody:
     properties:
       email:
@@ -110,6 +119,25 @@ paths:
       summary: Register new user
       tags:
       - Authentication-Service
+  /auth/token-refresh:
+    post:
+      operationId: User RefreshToken
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.TokenRefreshResponse'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/pb.TokenRefreshResponse'
+      security:
+      - BearerAuth: []
+      summary: Refresh token for users
+      tags:
+      - Authentication-Service
 securityDefinitions:
   ApiKeyAuth:
     in: header
@@ -117,6 +145,6 @@ securityDefinitions:
     type: apiKey
   BearerAuth:
     in: header
-    name: Authorization
+    name: authorization
     type: apiKey
 swagger: "2.0"

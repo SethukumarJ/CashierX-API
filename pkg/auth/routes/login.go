@@ -42,6 +42,6 @@ func Login(ctx *gin.Context, c pb.AuthServiceClient) {
 		ctx.AbortWithStatusJSON(int(res.Status), res.Error)
 		return
 	}
-
+	ctx.Writer.Header().Set("accesstoken", res.AccessToken)
 	ctx.JSON(http.StatusCreated, &res)
 }

@@ -109,6 +109,37 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/auth/token-refresh": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authentication-Service"
+                ],
+                "summary": "Refresh token for users",
+                "operationId": "User RefreshToken",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/pb.TokenRefreshResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/pb.TokenRefreshResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -140,6 +171,20 @@ const docTemplate = `{
                 },
                 "status": {
                     "type": "integer"
+                }
+            }
+        },
+        "pb.TokenRefreshResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "token": {
+                    "type": "string"
                 }
             }
         },
@@ -183,7 +228,7 @@ const docTemplate = `{
         },
         "BearerAuth": {
             "type": "apiKey",
-            "name": "Authorization",
+            "name": "authorization",
             "in": "header"
         }
     }

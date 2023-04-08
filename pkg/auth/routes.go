@@ -10,11 +10,17 @@ func RegisterRoutes(r *gin.Engine, c *config.Config) *ServiceClient {
     svc := &ServiceClient{
         Client: InitServiceClient(c),
     }
+    authMiddleware := InitAuthMiddleware(svc)
+
+    // Create a new group for the auth routes that require authentication
+    authRoutes := r.Group("/auth")
+    authRoutes.Use(authMiddleware.RefreshTokenMiddleware)
 
     routes := r.Group("/auth")
     routes.DELETE("/delete/:id",svc.DeleteUser)
     routes.POST("/register", svc.Register)
     routes.POST("/login", svc.Login)
+    authRoutes.POST("/token-refresh",svc.TokenRefresh)
 
     return svc
 }
@@ -29,4 +35,7 @@ func (svc *ServiceClient) Login(ctx *gin.Context) {
 
 func (svc *ServiceClient) DeleteUser(ctx *gin.Context) {
     routes.DeleteUser(ctx, svc.Client)
+}
+func (svc *ServiceClient) TokenRefresh(ctx *gin.Context) {
+    routes.TokenRefresh(ctx, svc.Client)
 }
