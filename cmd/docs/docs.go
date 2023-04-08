@@ -222,6 +222,38 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/user/getusers": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User-Section"
+                ],
+                "summary": "Get users",
+                "operationId": "Get users",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/pb.GetUsersResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/pb.GetUsersResponse"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/pb.GetUsersResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -256,6 +288,23 @@ const docTemplate = `{
                 },
                 "status": {
                     "type": "integer"
+                }
+            }
+        },
+        "pb.GetUsersResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "user": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/pb.User"
+                    }
                 }
             }
         },
@@ -300,6 +349,26 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "pb.User": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "user_name": {
                     "type": "string"
                 }
             }

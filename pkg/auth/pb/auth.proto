@@ -70,7 +70,9 @@ message ValidateResponse {
 
 message GetUsersRequest {}
 message GetUsersResponse {
-  repeated User user = 1;
+  int64 status = 1;
+  string error = 2;
+  repeated User user = 3;
 }
 
 message User {

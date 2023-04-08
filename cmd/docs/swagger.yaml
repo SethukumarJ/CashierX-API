@@ -22,6 +22,17 @@ definitions:
       status:
         type: integer
     type: object
+  pb.GetUsersResponse:
+    properties:
+      error:
+        type: string
+      status:
+        type: integer
+      user:
+        items:
+          $ref: '#/definitions/pb.User'
+        type: array
+    type: object
   pb.LoginResponse:
     properties:
       access_token:
@@ -49,6 +60,19 @@ definitions:
       status:
         type: integer
       token:
+        type: string
+    type: object
+  pb.User:
+    properties:
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: integer
+      last_name:
+        type: string
+      user_name:
         type: string
     type: object
   routes.LoginRequestBody:
@@ -212,6 +236,27 @@ paths:
           schema:
             $ref: '#/definitions/pb.FindUserResponse'
       summary: Find user by id
+      tags:
+      - User-Section
+  /user/getusers:
+    get:
+      operationId: Get users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.GetUsersResponse'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/pb.GetUsersResponse'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/pb.GetUsersResponse'
+      summary: Get users
       tags:
       - User-Section
 securityDefinitions:

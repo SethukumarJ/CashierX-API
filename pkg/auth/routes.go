@@ -24,6 +24,7 @@ func RegisterRoutes(r *gin.Engine, c *config.Config) *ServiceClient {
     userRoutes := r.Group("/user")
     userRoutes.DELETE("/delete/:id",svc.DeleteUser)
     userRoutes.GET("/finduser/:id",svc.FindUser)
+    userRoutes.GET("/getusers",svc.GetUsers)
     return svc
 }
 
@@ -37,6 +38,9 @@ func (svc *ServiceClient) Login(ctx *gin.Context) {
 
 func (svc *ServiceClient) DeleteUser(ctx *gin.Context) {
     routes.DeleteUser(ctx, svc.Client)
+}
+func (svc *ServiceClient) GetUsers(ctx *gin.Context) {
+    routes.GetUsers(ctx, svc.Client)
 }
 func (svc *ServiceClient) FindUser(ctx *gin.Context) {
     routes.FindUser(ctx, svc.Client)
