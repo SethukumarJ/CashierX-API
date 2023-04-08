@@ -1,5 +1,27 @@
 basePath: /
 definitions:
+  pb.FindUser:
+    properties:
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: integer
+      last_name:
+        type: string
+      user_name:
+        type: string
+    type: object
+  pb.FindUserResponse:
+    properties:
+      data:
+        $ref: '#/definitions/pb.FindUser'
+      error:
+        type: string
+      status:
+        type: integer
+    type: object
   pb.LoginResponse:
     properties:
       access_token:
@@ -163,6 +185,33 @@ paths:
           schema:
             $ref: '#/definitions/pb.RegisterResponse'
       summary: Delete user
+      tags:
+      - User-Section
+  /user/finduser/{id}:
+    get:
+      operationId: Find user by id
+      parameters:
+      - description: Find user by id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.FindUserResponse'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/pb.FindUserResponse'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/pb.FindUserResponse'
+      summary: Find user by id
       tags:
       - User-Section
 securityDefinitions:

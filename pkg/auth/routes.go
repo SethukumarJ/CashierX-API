@@ -20,10 +20,10 @@ func RegisterRoutes(r *gin.Engine, c *config.Config) *ServiceClient {
     routes := r.Group("/auth")
     routes.POST("/register", svc.Register)
     routes.POST("/login", svc.Login)
-    
+
     userRoutes := r.Group("/user")
     userRoutes.DELETE("/delete/:id",svc.DeleteUser)
-  
+    userRoutes.GET("/finduser/:id",svc.FindUser)
     return svc
 }
 
@@ -37,6 +37,9 @@ func (svc *ServiceClient) Login(ctx *gin.Context) {
 
 func (svc *ServiceClient) DeleteUser(ctx *gin.Context) {
     routes.DeleteUser(ctx, svc.Client)
+}
+func (svc *ServiceClient) FindUser(ctx *gin.Context) {
+    routes.FindUser(ctx, svc.Client)
 }
 func (svc *ServiceClient) TokenRefresh(ctx *gin.Context) {
     routes.TokenRefresh(ctx, svc.Client)
