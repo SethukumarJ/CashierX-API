@@ -2,6 +2,7 @@ package routes
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"net/http"
 	"strconv"
@@ -10,17 +11,29 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @Summary Delete user
+// @ID Delete user
+// @Tags User-Section
+// @Produce json
+// @param id path string true "Id of the user to be deleted"
+// @Success 200 {object} pb.RegisterResponse{}
+// @Failure 422 {object} pb.RegisterResponse{}
+// @Failure 502 {object} pb.RegisterResponse{}
+// @Router /user/delete/{id} [delete]
+// DeleteUser deletes a user with the given ID.
 func DeleteUser(ctx *gin.Context, c pb.AuthServiceClient) {
-	id, _ := strconv.ParseInt(ctx.Param("id"), 10, 32)
-	fmt.Println("id", id)
-	res, err := c.DeleteUser(context.Background(), &pb.DeleteUserRequest{
-		Id: int64(id),
-	})
-
+	paramsID := ctx.Param("id")
+	id, err := strconv.Atoi(paramsID)
 	if err != nil {
-		ctx.AbortWithError(http.StatusBadGateway, err)
+		ctx.AbortWithStatusJSON(http.StatusUnprocessableEntity, pb.DeleteUserResponse{Error: fmt.Sprint(errors.New("id not found"))})
 		return
 	}
 
-	ctx.JSON(http.StatusCreated, &res)
+	res, err := c.DeleteUser(context.Background(), &pb.DeleteUserRequest{Id: int64(id)})
+	if err != nil {
+		ctx.AbortWithStatusJSON(int(res.Status), res.Error)
+		return
+	}
+
+	ctx.JSON(http.StatusOK, &res)
 }

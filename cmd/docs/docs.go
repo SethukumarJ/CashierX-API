@@ -140,6 +140,47 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/user/delete/{id}": {
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User-Section"
+                ],
+                "summary": "Delete user",
+                "operationId": "Delete user",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id of the user to be deleted",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/pb.RegisterResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/pb.RegisterResponse"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/pb.RegisterResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
