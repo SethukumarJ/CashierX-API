@@ -20,6 +20,7 @@ func RegisterRoutes(r *gin.Engine, c *config.Config, authSvc *auth.ServiceClient
 	routes.Use(a.AuthRequired)
 	routes.POST("/create", svc.CreateAccount)
 	routes.GET("/get/:id", svc.FindAccount )
+	routes.PUT("/update/:id", svc.UpdateAccount)
 	
 }
 
@@ -29,4 +30,7 @@ func (svc *ServiceClient) CreateAccount(ctx *gin.Context) {
 }
 func (svc *ServiceClient) FindAccount(ctx *gin.Context) {
 	routes.FindAccount(ctx, svc.Client)
+}
+func (svc *ServiceClient) UpdateAccount(ctx *gin.Context) {
+	routes.UpdateAccount(ctx, svc.Client)
 }

@@ -52,6 +52,7 @@ message FindAccountResponse {
 // Update Account
 
 message UpdateAccountRequest {
+    int64 id = 1;
     string type = 2;
     int64 balance = 3;
   }

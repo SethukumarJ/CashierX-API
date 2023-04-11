@@ -95,6 +95,15 @@ definitions:
       token:
         type: string
     type: object
+  pb.UpdateAccountResponse:
+    properties:
+      error:
+        type: string
+      id:
+        type: integer
+      status:
+        type: integer
+    type: object
   pb.User:
     properties:
       email:
@@ -133,6 +142,13 @@ definitions:
       password:
         type: string
       user_name:
+        type: string
+    type: object
+  routes.UpdateAccountRequestBody:
+    properties:
+      balance:
+        type: integer
+      type:
         type: string
     type: object
 host: localhost:3005
@@ -206,6 +222,41 @@ paths:
       security:
       - BearerAuth: []
       summary: Find user by id
+      tags:
+      - Account-Service
+  /account/update/{id}:
+    put:
+      operationId: Update Account
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Create Account
+        in: body
+        name: UpdateAccount
+        required: true
+        schema:
+          $ref: '#/definitions/routes.UpdateAccountRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.UpdateAccountResponse'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/pb.UpdateAccountResponse'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/pb.UpdateAccountResponse'
+      security:
+      - BearerAuth: []
+      summary: Update account
       tags:
       - Account-Service
   /auth/login:

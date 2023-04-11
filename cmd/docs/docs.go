@@ -118,6 +118,61 @@ const docTemplate = `{
                 }
             }
         },
+        "/account/update/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Account-Service"
+                ],
+                "summary": "Update account",
+                "operationId": "Update Account",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Account ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Create Account",
+                        "name": "UpdateAccount",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/routes.UpdateAccountRequestBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/pb.UpdateAccountResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/pb.UpdateAccountResponse"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/pb.UpdateAccountResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/auth/login": {
             "post": {
                 "produces": [
@@ -498,6 +553,20 @@ const docTemplate = `{
                 }
             }
         },
+        "pb.UpdateAccountResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
         "pb.User": {
             "type": "object",
             "properties": {
@@ -556,6 +625,17 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "routes.UpdateAccountRequestBody": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "type": "integer"
+                },
+                "type": {
                     "type": "string"
                 }
             }
