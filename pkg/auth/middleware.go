@@ -83,6 +83,6 @@ func (c *AuthMiddlewareConfig) AuthRequired(ctx *gin.Context) {
 	}
 
 	ctx.Writer.Header().Set("userId", fmt.Sprint(res.UserId))
-
+	fmt.Println("userId", res.UserId)
 	ctx.Next()
 }

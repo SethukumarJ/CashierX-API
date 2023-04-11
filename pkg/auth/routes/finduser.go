@@ -24,7 +24,7 @@ func FindUser(ctx *gin.Context, c pb.AuthServiceClient) {
 	paramsID := ctx.Param("id")
 	id, err := strconv.Atoi(paramsID)
 	if err != nil {
-		ctx.AbortWithStatusJSON(http.StatusUnprocessableEntity, pb.DeleteUserResponse{Error: fmt.Sprint(errors.New("id not found"))})
+		ctx.AbortWithStatusJSON(http.StatusUnprocessableEntity, pb.FindUserResponse{Error: fmt.Sprint(errors.New("id not found"))})
 		return
 	}
 	res, err := c.FindUser(context.Background(), &pb.FindUserRequest{

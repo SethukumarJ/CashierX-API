@@ -1,5 +1,38 @@
 basePath: /
 definitions:
+  pb.CreateAccountResponse:
+    properties:
+      error:
+        type: string
+      id:
+        type: integer
+      status:
+        type: integer
+    type: object
+  pb.FindAccountData:
+    properties:
+      account_number:
+        type: integer
+      accountHolder:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      type:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  pb.FindAccountResponse:
+    properties:
+      data:
+        $ref: '#/definitions/pb.FindAccountData'
+      error:
+        type: string
+      status:
+        type: integer
+    type: object
   pb.FindUser:
     properties:
       email:
@@ -75,6 +108,13 @@ definitions:
       user_name:
         type: string
     type: object
+  routes.CreateAccountRequestBody:
+    properties:
+      balance:
+        type: integer
+      type:
+        type: string
+    type: object
   routes.LoginRequestBody:
     properties:
       email:
@@ -109,6 +149,65 @@ info:
   title: CashierX API
   version: "1.0"
 paths:
+  /account/create:
+    post:
+      operationId: Create Account
+      parameters:
+      - description: Create Account
+        in: body
+        name: CreateAccount
+        required: true
+        schema:
+          $ref: '#/definitions/routes.CreateAccountRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.CreateAccountResponse'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/pb.CreateAccountResponse'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/pb.CreateAccountResponse'
+      security:
+      - BearerAuth: []
+      summary: Create account
+      tags:
+      - Account-Service
+  /account/get/{id}:
+    get:
+      operationId: Find account by id
+      parameters:
+      - description: Find account by id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.FindAccountResponse'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/pb.FindAccountResponse'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/pb.FindAccountResponse'
+      security:
+      - BearerAuth: []
+      summary: Find user by id
+      tags:
+      - Account-Service
   /auth/login:
     post:
       operationId: User Login

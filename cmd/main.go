@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/SethukumarJ/CashierX-API/pkg/account"
 	"github.com/SethukumarJ/CashierX-API/pkg/auth"
 	"github.com/SethukumarJ/CashierX-API/pkg/config"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
-	"github.com/swaggo/gin-swagger"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 // @title CashierX API
@@ -44,7 +45,7 @@ func main() {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	authSvc := *auth.RegisterRoutes(r, &c)
 	fmt.Println("authSvc", authSvc)
-	// account.RegisterRoutes(r, &c, &authSvc)
+	account.RegisterRoutes(r, &c, &authSvc)
 	// transaction.RegisterRoutes(r, &c, &authSvc)
 
 	r.Run(c.Port)
