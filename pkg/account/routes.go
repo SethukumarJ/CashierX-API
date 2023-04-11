@@ -21,6 +21,8 @@ func RegisterRoutes(r *gin.Engine, c *config.Config, authSvc *auth.ServiceClient
 	routes.POST("/create", svc.CreateAccount)
 	routes.GET("/get/:id", svc.FindAccount )
 	routes.PUT("/update/:id", svc.UpdateAccount)
+	routes.GET("/getall/:id", svc.GetAccounts)
+	routes.DELETE("/delete/:id", svc.DeleteAccount)
 	
 }
 
@@ -33,4 +35,10 @@ func (svc *ServiceClient) FindAccount(ctx *gin.Context) {
 }
 func (svc *ServiceClient) UpdateAccount(ctx *gin.Context) {
 	routes.UpdateAccount(ctx, svc.Client)
+}
+func (svc *ServiceClient) DeleteAccount(ctx *gin.Context) {
+	routes.DeleteAccount(ctx, svc.Client)
+}
+func (svc *ServiceClient) GetAccounts(ctx *gin.Context) {
+	routes.GetUserAccounts(ctx, svc.Client)
 }

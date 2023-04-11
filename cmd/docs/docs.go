@@ -72,6 +72,52 @@ const docTemplate = `{
                 }
             }
         },
+        "/account/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Account-Service"
+                ],
+                "summary": "Delete account",
+                "operationId": "Delete account",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id of the account to be deleted",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/pb.DeleteAccountResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/pb.DeleteAccountResponse"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/pb.DeleteAccountResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/account/get/{id}": {
             "get": {
                 "security": [
@@ -113,6 +159,52 @@ const docTemplate = `{
                         "description": "Bad Gateway",
                         "schema": {
                             "$ref": "#/definitions/pb.FindAccountResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/getall/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Account-Service"
+                ],
+                "summary": "Get accounts of  user",
+                "operationId": "Get accounts",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/pb.GetAccountsResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/pb.GetAccountsResponse"
+                        }
+                    },
+                    "502": {
+                        "description": "Bad Gateway",
+                        "schema": {
+                            "$ref": "#/definitions/pb.GetAccountsResponse"
                         }
                     }
                 }
@@ -313,19 +405,19 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/pb.RegisterResponse"
+                            "$ref": "#/definitions/pb.DeleteUserResponse"
                         }
                     },
                     "422": {
                         "description": "Unprocessable Entity",
                         "schema": {
-                            "$ref": "#/definitions/pb.RegisterResponse"
+                            "$ref": "#/definitions/pb.DeleteUserResponse"
                         }
                     },
                     "502": {
                         "description": "Bad Gateway",
                         "schema": {
-                            "$ref": "#/definitions/pb.RegisterResponse"
+                            "$ref": "#/definitions/pb.DeleteUserResponse"
                         }
                     }
                 }
@@ -420,6 +512,34 @@ const docTemplate = `{
                 }
             }
         },
+        "pb.DeleteAccountResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "pb.DeleteUserResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
         "pb.FindAccountData": {
             "type": "object",
             "properties": {
@@ -482,6 +602,23 @@ const docTemplate = `{
             "properties": {
                 "data": {
                     "$ref": "#/definitions/pb.FindUser"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "pb.GetAccountsResponse": {
+            "type": "object",
+            "properties": {
+                "accounts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/pb.FindAccountData"
+                    }
                 },
                 "error": {
                     "type": "string"

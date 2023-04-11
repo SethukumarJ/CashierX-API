@@ -16,9 +16,9 @@ import (
 // @Tags User-Section
 // @Produce json
 // @param id path string true "Id of the user to be deleted"
-// @Success 200 {object} pb.RegisterResponse{}
-// @Failure 422 {object} pb.RegisterResponse{}
-// @Failure 502 {object} pb.RegisterResponse{}
+// @Success 200 {object} pb.DeleteUserResponse{}
+// @Failure 422 {object} pb.DeleteUserResponse{}
+// @Failure 502 {object} pb.DeleteUserResponse{}
 // @Router /user/delete/{id} [delete]
 // DeleteUser deletes a user with the given ID.
 func DeleteUser(ctx *gin.Context, c pb.AuthServiceClient) {

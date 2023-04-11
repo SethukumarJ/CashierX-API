@@ -9,6 +9,24 @@ definitions:
       status:
         type: integer
     type: object
+  pb.DeleteAccountResponse:
+    properties:
+      error:
+        type: string
+      id:
+        type: integer
+      status:
+        type: integer
+    type: object
+  pb.DeleteUserResponse:
+    properties:
+      error:
+        type: string
+      id:
+        type: integer
+      status:
+        type: integer
+    type: object
   pb.FindAccountData:
     properties:
       account_number:
@@ -50,6 +68,17 @@ definitions:
     properties:
       data:
         $ref: '#/definitions/pb.FindUser'
+      error:
+        type: string
+      status:
+        type: integer
+    type: object
+  pb.GetAccountsResponse:
+    properties:
+      accounts:
+        items:
+          $ref: '#/definitions/pb.FindAccountData'
+        type: array
       error:
         type: string
       status:
@@ -195,6 +224,35 @@ paths:
       summary: Create account
       tags:
       - Account-Service
+  /account/delete/{id}:
+    delete:
+      operationId: Delete account
+      parameters:
+      - description: Id of the account to be deleted
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.DeleteAccountResponse'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/pb.DeleteAccountResponse'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/pb.DeleteAccountResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete account
+      tags:
+      - Account-Service
   /account/get/{id}:
     get:
       operationId: Find account by id
@@ -222,6 +280,35 @@ paths:
       security:
       - BearerAuth: []
       summary: Find user by id
+      tags:
+      - Account-Service
+  /account/getall/{id}:
+    get:
+      operationId: Get accounts
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.GetAccountsResponse'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/pb.GetAccountsResponse'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/pb.GetAccountsResponse'
+      security:
+      - BearerAuth: []
+      summary: Get accounts of  user
       tags:
       - Account-Service
   /account/update/{id}:
@@ -349,15 +436,15 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/pb.RegisterResponse'
+            $ref: '#/definitions/pb.DeleteUserResponse'
         "422":
           description: Unprocessable Entity
           schema:
-            $ref: '#/definitions/pb.RegisterResponse'
+            $ref: '#/definitions/pb.DeleteUserResponse'
         "502":
           description: Bad Gateway
           schema:
-            $ref: '#/definitions/pb.RegisterResponse'
+            $ref: '#/definitions/pb.DeleteUserResponse'
       summary: Delete user
       tags:
       - User-Section
