@@ -23,6 +23,7 @@ func RegisterRoutes(r *gin.Engine, c *config.Config, authSvc *auth.ServiceClient
 	routes.PUT("/update/:id", svc.UpdateAccount)
 	routes.GET("/getall/:id", svc.GetAccounts)
 	routes.DELETE("/delete/:id", svc.DeleteAccount)
+	routes.GET("/balance/:id", svc.GetBalance)
 	
 }
 
@@ -38,6 +39,9 @@ func (svc *ServiceClient) UpdateAccount(ctx *gin.Context) {
 }
 func (svc *ServiceClient) DeleteAccount(ctx *gin.Context) {
 	routes.DeleteAccount(ctx, svc.Client)
+}
+func (svc *ServiceClient) GetBalance(ctx *gin.Context) {
+	routes.GetBalance(ctx, svc.Client)
 }
 func (svc *ServiceClient) GetAccounts(ctx *gin.Context) {
 	routes.GetUserAccounts(ctx, svc.Client)

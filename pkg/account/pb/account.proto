@@ -97,7 +97,7 @@ message GetBalanceRequest { int64 id = 1; }
 message GetBalanceResponse {
   int64 status = 1;
   string error = 2;
-  int64 balance = 3;
+  float balance = 3;
 }
 
 // GetAllTransactions

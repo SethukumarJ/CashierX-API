@@ -84,6 +84,15 @@ definitions:
       status:
         type: integer
     type: object
+  pb.GetBalanceResponse:
+    properties:
+      balance:
+        type: number
+      error:
+        type: string
+      status:
+        type: integer
+    type: object
   pb.GetUsersResponse:
     properties:
       error:
@@ -194,6 +203,37 @@ info:
   title: CashierX API
   version: "1.0"
 paths:
+  /account/balance/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Balance
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/pb.GetBalanceResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/pb.GetBalanceResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/pb.GetBalanceResponse'
+      security:
+      - BearerAuth: []
+      summary: Get Balance
+      tags:
+      - Account-Service
   /account/create:
     post:
       operationId: Create Account
